@@ -24,8 +24,8 @@ def main():
         [sg.Radio('Add', 'RADIO1', key='add'), sg.Radio('Subtract', 'RADIO1', key='subtract'),
          sg.Radio('Multiply', 'RADIO1', key='multiply'), sg.Radio('Divide', 'RADIO1', key='divide')],
         [sg.Frame('Inputs', [
-            [sg.Text('Enter the first number:'), sg.InputText(key='first')],
-            [sg.Text('Enter the second number:'), sg.InputText(key='second')]])],
+            [sg.Text('Enter the first number:'), sg.InputText(key='a')],
+            [sg.Text('Enter the second number:'), sg.InputText(key='b')]])],
         [sg.Button('Submit'), sg.Button('Exit')]
     ]
 
@@ -33,21 +33,43 @@ def main():
     window = sg.Window('APP CALCULATOR', layout)
 
     # WHILE Start a loop until user choose to exit
-        # Ask the user to choose one of the four math operations
-            # TRY calling math operations
-                # If "addition", call addition function
-                # Elif "subtraction", call subtraction function
-                # Elif "multiplication", call multiplication function
-                # Elif "division", call division function
-                    # If ZeroDivisionError, raise it
+    while True:
+        event, values = window.read()
+        if event in (None, 'Exit'):
+            break
 
-                # Else, user did not choose any math operations
-                # exception for ZeroDivisionError using Pop-up
-                # exception for ValueError using Pop-up
-            
+        # TRY calling math operations
+        try:
+            num1 = float(values['a'])
+            num2 = float(values['b'])
+            # If "addition", call addition function
+            if values['add']:
+                result = add(num1, num2)
+            # Elif "subtraction", call subtraction function
+            elif values['subtract']:
+                result = subtract(num1, num2)
+            # Elif "multiplication", call multiplication function
+            elif values['multiply']:
+                result = multiply(num1, num2)
+            # Elif "division", call division function
+            elif values['divide']:
+                # If ZeroDivisionError, raise it
+                if num2 == 0:
+                    raise ZeroDivisionError
+                result = divide(num1, num2)
+            # Else, user did not choose any math operations
+            else:
+                sg.popup("Please select a math operation.", title="Math Operation Error")
+
             # Create Pop-Up to display result
-                # If the user choose exit window, exit the window
-            # Close the Pop-up
+            sg.popup(f'The result is: {result}', title='Result', button_type=sg.BUTTON_OK)
+ 
+        # exception for ZeroDivisionError using Pop-up
+        except ValueError:
+            sg.popup('Invalid input. Please enter valid numbers.', title='Error')
+        # exception for ValueError using Pop-up
+        except ZeroDivisionError:
+            sg.popup("Cannot divide by zero. Please enter a different second number.", title="Error")
 
             # Define the try_again window's contents
             # Display try_again window
