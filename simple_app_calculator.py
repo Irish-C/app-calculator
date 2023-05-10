@@ -34,7 +34,7 @@ def main():
     # WHILE Start a loop until user choose to exit
     while True:
         event, values = window.read()
-        if event is (None):
+        if event is (None) or event == sg.WINDOW_CLOSED:
             break
 
         # TRY calling math operations
@@ -65,16 +65,15 @@ def main():
                 # Create Pop-Up to display result
                 sg.popup(f'The result is: {result}', title='Result', button_type=sg.POPUP_BUTTONS_OK, keep_on_top=True)
                 try_again()
+
             # exception for ZeroDivisionError using Pop-up
             except ValueError:
-                sg.popup('Invalid input. Please enter valid numbers.', title='Math Operation Error', keep_on_top=True)
+                sg.popup('Invalid input. Please enter valid numbers.', title='Invalid Number Error', keep_on_top=True)
                 try_again()
-                break
             # exception for ValueError using Pop-up
             except ZeroDivisionError:
                 sg.popup("Cannot divide by zero. Please enter a different second number.", title=" Zero Division Error", keep_on_top=True)
                 try_again()
-                break
 
 def try_again():
     # Define the try_again window's contents
@@ -84,8 +83,9 @@ def try_again():
     ]            
     # Display try_again window
     window_try_again = sg.Window('Try Again', layout_try_again)
-    event = window_try_again.read()
+    event, values = window_try_again.read()
     if event == 'Yes':
+        window_try_again.close()
         main()
     if event == None or event == 'No':
         sg.popup('Thank you!', title='Exit')
