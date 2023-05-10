@@ -4,16 +4,16 @@ import PySimpleGUI as sg
 # Define four math operations function
 # Define addition function
 def add(a, b):
-    return (a + b)
+    return round(a + b, 2)
 # Define subtraction function
 def subtract(a, b):
     return a - b
 # Define multiplication function
 def multiply(a, b):
-    return a * b
+    return round(a * b, 2)
 # Define division function
 def divide(a, b):
-    return a / b
+    return round(a / b, 2)
 
 # Define main function
 def main():
