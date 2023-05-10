@@ -1,13 +1,12 @@
 # import modules
 import PySimpleGUI as sg
 
-# Define four math operations function
 # Define addition function
 def add(a, b):
     return round(a + b, 2)
 # Define subtraction function
 def subtract(a, b):
-    return a - b
+    return round(a - b, 2)
 # Define multiplication function
 def multiply(a, b):
     return round(a * b, 2)
@@ -85,7 +84,7 @@ def try_again():
     ]            
     # Display try_again window
     window_try_again = sg.Window('Try Again', layout_try_again)
-    event, values = window_try_again.read()
+    event = window_try_again.read()
     if event == 'Yes':
         main()
     if event == None or event == 'No':
