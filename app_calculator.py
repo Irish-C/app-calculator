@@ -19,16 +19,18 @@ def divide(a, b):
 def main():
     sg.theme("DarkTeal10")
     # Define the math_operations window's contents
-        # Set Text that prompts user to choose from four math operations
-        # Set Radio for Addition, Subtraction, Multiplication and Division
-
-        # Create a frame
-        # Set text that prompts user to enter the first number by input text
-        # Set text that prompts user to enter the second number by input text
-        # Set "calculate" button
+    layout = [
+        [sg.Text('Choose a math operation:')],
+        [sg.Radio('Add', 'RADIO1', key='add'), sg.Radio('Subtract', 'RADIO1', key='subtract'),
+         sg.Radio('Multiply', 'RADIO1', key='multiply'), sg.Radio('Divide', 'RADIO1', key='divide')],
+        [sg.Frame('Inputs', [
+            [sg.Text('Enter the first number:'), sg.InputText(key='first')],
+            [sg.Text('Enter the second number:'), sg.InputText(key='second')]])],
+        [sg.Button('Submit'), sg.Button('Exit')]
+    ]
 
     # Create the math_operations window
-    # Close the math_operations window
+    window = sg.Window('APP CALCULATOR', layout)
 
     # WHILE Start a loop until user choose to exit
         # Ask the user to choose one of the four math operations
