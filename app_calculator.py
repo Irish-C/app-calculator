@@ -1,12 +1,19 @@
 # import modules
 import PySimpleGUI as sg
 
-# Define four math operations fuction
+# Define four math operations function
 # Define addition function
+def add(a, b):
+    return a + b
 # Define subtraction function
+def subtract(a, b):
+    return a - b
 # Define multiplication function
+def multiply(a, b):
+    return a * b
 # Define division function
-    # exception for ZeroDivisionError
+def divide(a, b):
+    return a / b
 
 # Define the math_operations window's contents
     # Set Text that prompts user to choose from four math operations
