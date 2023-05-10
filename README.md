@@ -1,5 +1,5 @@
 # Simple App Calculator
-This simple app calculator with **exception handling** will prompt the user to perform one of the four math operations of two numbers repeatedly until they want to exit.
+This simple app calculator with <span style="color:yellow"> **exception handling** </span> will prompt the user to perform one of the four math operations of two numbers repeatedly until they want to exit.
 <br/>
 
 Math operations are:
@@ -9,7 +9,8 @@ Math operations are:
 * Division
 
 ## Installation
-To run the program, you'll need to have [Python 3](https://www.python.org/downloads/) installed on your computer. <br/>
+To run the program, you'll need to have [Python 3](https://www.python.org/downloads/) installed on your computer. 
+<br/>
 >**Note: This program might works only for windows os.**
 <br/>
 
@@ -19,7 +20,9 @@ I used [VS Code](https://code.visualstudio.com/download) to create and run the p
 The script requires the following Python packages:
 * PySimpleGUI
 <br/>
+
 ```pip install pySimpleGUI ```
+
 <br/>
 
 ## How to make this code works
@@ -31,12 +34,12 @@ The script requires the following Python packages:
 
 ## How does the app works
 1. Select from the four math operations
-> * If user did not select, the math operation error will appear.
+> * If user did not select, the <span style="color:red"> math operation error </span> will appear.
 2. Enter first number and second number.
-> * If user did not enter or entered an invalid value, the invalid error will appear.
-> * If the user entered 0 as second number as divisor, the zero division error will appear.
+> * If user did not enter or entered an invalid value, the <span style="color:red"> Invalid number error </span> will appear.
+> * If the user entered 0 as second number as divisor, the <span style="color:red"> zero division error </span> will appear.
 3. Click 'Submit' button and the result will appear.
 4. Click 'OK' button and the app will ask if you want to try again.
 > * If yes, the program will start again.
 > * If no, the program will say 'Thank You!'. Click Exit to terminate the program.
-5. The program will run as long as you click 'yes' button.
+5. The program will run as long as you click 'yes' button and ill terminate if 'no' or exiting the window.
